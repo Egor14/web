@@ -1,21 +1,23 @@
-const restify = require('restify');
+var express = require('express')
 
-const server = restify.createServer({
-	name: 'My Server App',
-	version: '1.0.0'
+var app = express();
+
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + '/index.html');
 });
 
-server.get('/hello', function (req, res, next){
-	console.log('/hello .. was called');
-	res.send('Hello world');
-	return next();
+app.get('/1', function(req, res) {
+	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/yeezy_zebra.png', description: 'YEEZY BOOST 350 V2 "ZEBRA"'});
 });
 
-server.get('/hello/:name', function (req, res, next){
-	console.log('/hello' + req.params.name);
-	res.send('Hello, ' + req.params.name);
-	return next();
+app.get('/2', function(req, res) {
+	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/jordan.png', description: 'NIKE AIR JORDAN'});
 });
 
-server.listen(8080,
-	() => console.log('Server UP!'));
+app.get('/3', function(req, res) {
+	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/air.png', description: 'NIKE AIR MAX'});
+});
+
+app.listen(3000);
