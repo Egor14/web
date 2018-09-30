@@ -24,7 +24,20 @@ h2{
   text-align: center;
 }
 
+div.block {
+   display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+ul, li {
+  text-align: center;
+}
 
 #Timer{
 	margin: auto;
