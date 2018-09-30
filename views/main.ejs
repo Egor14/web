@@ -14,9 +14,10 @@
  </h1>
 
 <div>
-  <img class="displayed" src = <%= lot %>>
+  <% obj = JSON.parse(lot); %>
+  <img class="displayed" src = <%= obj.url %>>
   <h2>
-    <%= description %>
+    <%= obj.name %>
   </h2>
 </div>
 
@@ -24,7 +25,7 @@
 <div class = "block">
   <div id="Price">
    Price:
-  <span id="price"></span>
+  <span id="price"><%= obj.price %></span>
   $
 </div>
 

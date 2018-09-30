@@ -12,9 +12,9 @@
   }
 
 baseTime = "00:15";
-basePrice = 50;
+basePrice = Number(document.getElementById("price").innerHTML);
 document.getElementById("time").innerHTML = baseTime;
-document.getElementById("price").innerHTML = basePrice;
+//document.getElementById("price").innerHTML = basePrice;
 startTimer();
 function startTimer(){
 	var currentTimer = document.getElementById("time").innerHTML;
