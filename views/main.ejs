@@ -8,19 +8,21 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+  <p><a href="/sign">Регистрация</a></p>
   <h1>
   Take a part in the auction 
  </h1>
 
 <div>
-  <img src = <%= lot %>>
+  <img class="displayed" src = <%= lot %>>
   <h2>
     <%= description %>
   </h2>
 </div>
 
 
-<div id="Price">
+<div class = "block">
+  <div id="Price">
    Price:
   <span id="price"></span>
   $
@@ -55,6 +57,7 @@
         class="btn btn-primary"> 
         Raise
 </button>
+</div>
 
 
 <script src="work.js"></script>
