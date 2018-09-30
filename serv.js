@@ -1,7 +1,10 @@
 var express = require('express')
 var path = require('path');
+var bodyParser = require("body-parser");
+
 var app = express();
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.set('view engine', 'ejs');
 
@@ -23,5 +26,15 @@ app.get('/2', function(req, res) {
 app.get('/3', function(req, res) {
 	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/air.png', description: 'NIKE AIR MAX'});
 });
+
+app.get('/sign', function(req, res) {
+	res.sendFile(__dirname + '/sign.html');
+});
+
+app.post('/sign', urlencodedParser, function (req, res) {
+  if (!req.body) return res.sendStatus(400);
+  console.log(req.body);
+  res.sendFile('C:/Documents/Sublime/First/index.html');
+})
 
 app.listen(3000);
