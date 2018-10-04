@@ -14,7 +14,7 @@
  </h1>
 
 <div>
-  <% obj = JSON.parse(lot); %>
+  <% obj = JSON.parse(msgpack.decode(lot)); %>
   <img class="displayed" src = <%= obj.url %>>
   <h2>
     <%= obj.name %>

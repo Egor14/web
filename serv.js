@@ -1,6 +1,7 @@
 var express = require('express')
 var path = require('path');
 var bodyParser = require("body-parser");
+var msgpack = require("msgpack-lite");
 
 var app = express();
 
@@ -33,32 +34,25 @@ var lot_1Json = JSON.stringify(lot_1);
 var lot_2Json = JSON.stringify(lot_2);
 var lot_3Json = JSON.stringify(lot_3);
 
+var lot_1messPack = msgpack.encode(lot_1Json);
+var lot_2messPack = msgpack.encode(lot_2Json);
+var lot_3messPack = msgpack.encode(lot_3Json);
+
+
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
 });
 
-/*app.get('/1', function(req, res) {
-	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/yeezy_zebra.png', description: 'YEEZY BOOST 350 V2 "ZEBRA"'});
-});
-
-app.get('/2', function(req, res) {
-	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/jordan.png', description: 'NIKE AIR JORDAN'});
-});
-
-app.get('/3', function(req, res) {
-	res.render('main', {lot: 'https://raw.githubusercontent.com/Egor14/web/master/air.png', description: 'NIKE AIR MAX'});
-});*/
-
 app.get('/1', function(req, res) {
-	res.render('main', {lot: lot_1Json});
+	res.render('main', {lot: lot_1messPack, msgpack: msgpack});
 });
 
 app.get('/2', function(req, res) {
-	res.render('main', {lot: lot_2Json});
+	res.render('main', {lot: lot_2messPack, msgpack: msgpack});
 });
 
 app.get('/3', function(req, res) {
-	res.render('main', {lot: lot_3Json});
+	res.render('main', {lot: lot_3messPack, msgpack: msgpack});
 });
 
 app.get('/sign', function(req, res) {
@@ -68,7 +62,7 @@ app.get('/sign', function(req, res) {
 app.post('/sign', urlencodedParser, function (req, res) {
   if (!req.body) return res.sendStatus(400);
   console.log(req.body);
-  res.sendFile('C:/Documents/Sublime/First/index.html');
+  res.sendFile(__dirname + '/index.html');
 })
 
 app.listen(3000);
