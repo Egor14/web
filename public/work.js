@@ -34,10 +34,14 @@
     updatePrice(Number(document.getElementById("inputPassword6").value));
   }*/
 
-baseTime = "00:40";
-basePrice = Number(document.getElementById("price").innerHTML);
-document.getElementById("time").innerHTML = baseTime;
+//baseTime = "00:50";
+//basePrice = Number(document.getElementById("price").innerHTML);
+//document.getElementById("time").innerHTML = baseTime;
 //document.getElementById("price").innerHTML = basePrice;
+
+var btn = document.getElementById("btnRaise");
+var btn2 = document.getElementById("btnYourRaise");
+
 startTimer();
 function startTimer(){
 	var currentTimer = document.getElementById("time").innerHTML;
