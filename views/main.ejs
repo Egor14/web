@@ -25,40 +25,57 @@
 <div class = "block">
   <div id="Price">
    Price:
-  <span id="price"><%= obj.price %></span>
+  <span id="price">  <%= obj.price  %> </span>
   $
-</div>
+</div> 
+
+<!-- <form action="1" method="post">
+    <input type="hidden" id="Price" name="Price" value="<%= obj.price  %>"><%= obj.price  %>
+    <input type="submit" name="btn"  id="btnRaise" class="btn btn-success" value="Raise 5$">
+</form>
+ -->
 
 <div id="Timer">
   Time left:
   <span id="time"></span>
-</div>
+</div> 
 
-<button 
+
+<!-- <button 
         id="btnRaise"
         type="button" 
         class="btn btn-success">
         Raise 5$
-</button>
+</button>  -->
 
-<form class="form-inline">
+
+<form action="/update/<%= obj.lotID  %>" method="post">
+    <input type="hidden" id="Price" name="Price" value="5">
+    <input type="submit" name="bt"  id="btnRais" class="btn btn-success" value="Raise 5$">
+</form> 
+  
+
+<form action="/update/<%= obj.lotID  %>" method="post" class="form-inline">
   <div class="form-group">
     <label for="inputPassword6"> Your offer </label>
-    <input type="number" id="inputPassword6" class="form-control" placeholder="Enter your offer">
+    <input type="number" name="Price" id="inputPassword6" class="form-control" placeholder="Enter your offer">
     <small id="passwordHelpInline" class="text-muted">
-       $
+       $ <br>
     </small>
+    <input type="submit" name="bt2"  id="btnRais2" class="btn btn-primary" value="Raise 2">
   </div>
 </form>
 
-<button 
+<!-- <button 
         class="btn btn-primary"
         id="btnYourRaise"
         type="submit"
         class="btn btn-primary"> 
         Raise
-</button>
+</button> -->
 </div>
+
+
 
 
 <script src="work.js"></script>
