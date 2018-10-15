@@ -59,16 +59,6 @@ if (id == '1') {
     var lot_3messPack = msgpack.encode(lot_3Json);
     return lot_3messPack;
   }  
-
-  /*var lot_1Json = JSON.stringify(lot_1);
-  var lot_2Json = JSON.stringify(lot_2);
-  var lot_3Json = JSON.stringify(lot_3);
-
-  var lot_1messPack = msgpack.encode(lot_1Json);
-  var lot_2messPack = msgpack.encode(lot_2Json);
-  var lot_3messPack = msgpack.encode(lot_3Json);
-
-  return lot_1messPack;*/
 }
 
 
@@ -85,21 +75,15 @@ var begin2 = true;
 var begin3 = true;
 
 app.get('/', function(req, res) {
-  /*pusher.trigger('my-channel', 'my-event', {
-  "message": "hello world"
-  });*/
 	res.sendFile(__dirname + '/index.html');
+  
 });
 
 app.get('/index', function(req, res) {
-  /*pusher.trigger('my-channel', 'my-event', {
-  "message": "hello world"
-  });*/
   res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/1', function(req, res) {
-  //console.log(lot_1.time);
   lot_1messPack = pack(msgpack, 1);
   if (begin1 == true) {
     option = 1;
@@ -140,6 +124,9 @@ app.post('/sign', urlencodedParser, function (req, res) {
 })
 
 app.post('/update/:id', urlencodedParser, function (req, res) {
+  pusher.trigger('my-channel', 'my-event' + req.params.id, {
+  "message": req.body.Price
+  });
   if (req.params.id == '1') {
     lot_1.price += Number(req.body.Price);
     lot_1messPack = pack(msgpack, req.params.id);
@@ -159,22 +146,16 @@ function startTimer(option){
   if (option == 1) currentTimer = lot_1.time;
   else if (option == 2) currentTimer = lot_2.time;
   else if (option == 3) currentTimer = lot_3.time;
-  //console.log(currentTimer);
-  //console.log('dsfasds');
   var arr = currentTimer.split(':');
   var minutes = arr[0];
   var seconds = arr[1];
   if (minutes == 0 && seconds == 0){
-    //alert('Your time left');
-    //btnYourRaise.disabled = true;
-    //btnRaise.disabled = true;
     return;
   }
   else seconds -= 1;
   if (option == 1) lot_1.time = formatTime(minutes) + ":" + formatTime(seconds);
   else if (option == 2) lot_2.time = formatTime(minutes) + ":" + formatTime(seconds);
   else if (option == 3) lot_3.time = formatTime(minutes) + ":" + formatTime(seconds);
-  //lot_1.time = formatTime(minutes) + ":" + formatTime(seconds);
   setTimeout(startTimer, 1000, option);
 }
 
