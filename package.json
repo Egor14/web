@@ -1,0 +1,27 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serv.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "msgpack-lite": "^0.1.26",
+    "pusher": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node serv.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Egor14/web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Egor14/web/issues"
+  },
+  "homepage": "https://github.com/Egor14/web#readme"
+}
